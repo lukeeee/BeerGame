@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:text="@string/about"
             android:gravity="center"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:textSize="18dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"/>
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:text="Made By:"
             android:gravity="center"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="60dp"
             android:textSize="18dp"/>
         <TextView
             android:layout_height="wrap_content"

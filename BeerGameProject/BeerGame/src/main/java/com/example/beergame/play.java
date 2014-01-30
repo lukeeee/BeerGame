@@ -1,85 +1,66 @@
 package com.example.beergame;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
 
-public class play extends Activity implements View.OnClickListener {
-    private Button hitMe;
+
+public class play extends Fragment {
     private TextView play;
-    private Button Ace;
-    private Button King;
-    private Button Queen;
-    private Button Jack;
-    private Button Ten;
-    private Button Nine;
-    private Button Eight;
-    private Button Seven;
-    private Button Six;
-    private Button B5;
-    private Button B4;
-    private Button B3;
-    private Button B2;
-    private Button R5;
-    private Button R4;
-    private Button R3;
-    private Button R2;
+    private static final Integer[] mImageIds =
+            { R.drawable.c_a, R.drawable.c_eight, R.drawable.c_five,R.drawable.c_four,R.drawable.c_j,R.drawable.c_k,R.drawable.c_nine,R.drawable.c_q,R.drawable.c_seven,
+                    R.drawable.c_six,R.drawable.c_ten,R.drawable.c_three,R.drawable.c_two,R.drawable.s_a, R.drawable.s_eight, R.drawable.s_five,R.drawable.s_four,R.drawable.s_j,R.drawable.s_k,R.drawable.s_nine,R.drawable.s_q,R.drawable.s_seven,
+                    R.drawable.s_six,R.drawable.s_ten,R.drawable.s_three,R.drawable.s_two,R.drawable.h_a, R.drawable.h_eight, R.drawable.h_five,R.drawable.h_four,R.drawable.h_j,R.drawable.h_k,R.drawable.h_nine,R.drawable.h_q,R.drawable.h_seven,
+                    R.drawable.h_six,R.drawable.h_ten,R.drawable.h_three,R.drawable.h_two,R.drawable.d_a, R.drawable.d_eight, R.drawable.d_five,R.drawable.d_four,R.drawable.d_j,R.drawable.d_k,R.drawable.d_nine,R.drawable.d_q,R.drawable.d_seven,
+                    R.drawable.d_six,R.drawable.d_ten,R.drawable.d_three,R.drawable.d_two};
+    private ImageView gamecards;
+    private ImageView back;
+    private TextView rule;
+    private static final Random rgenerator = new Random();
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.beergame_activity);
-        hitMe = (Button)findViewById(R.id.newCard);
-        play = (TextView)findViewById(R.id.playText);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        Ace = (Button)findViewById(R.id.ace);
-        King = (Button)findViewById(R.id.king);
-        Queen = (Button)findViewById(R.id.queen);
-        Jack = (Button)findViewById(R.id.jack);
-        Ten = (Button)findViewById(R.id.ten);
-        Nine = (Button)findViewById(R.id.nine);
-        Eight = (Button)findViewById(R.id.eight);
-        Seven = (Button)findViewById(R.id.seven);
-        Six = (Button)findViewById(R.id.six);
-        B5 = (Button)findViewById(R.id.bFive);
-        B4 = (Button)findViewById(R.id.bFour);
-        B3 = (Button)findViewById(R.id.bThree);
-        B2 = (Button)findViewById(R.id.bTwo);
-        R5 = (Button)findViewById(R.id.rFive);
-        R4 = (Button)findViewById(R.id.rFour);
-        R3 = (Button)findViewById(R.id.rThree);
-        R2 = (Button)findViewById(R.id.rTwo);
-        Ace.setVisibility(View.INVISIBLE);
-        King.setVisibility(View.INVISIBLE);
-        Queen.setVisibility(View.INVISIBLE);
-        Jack.setVisibility(View.INVISIBLE);
-        Ten.setVisibility(View.INVISIBLE);
-        Nine.setVisibility(View.INVISIBLE);
-        Eight.setVisibility(View.INVISIBLE);
-        Seven.setVisibility(View.INVISIBLE);
-        Six.setVisibility(View.INVISIBLE);
-        B5.setVisibility(View.INVISIBLE);
-        B4.setVisibility(View.INVISIBLE);
-        B3.setVisibility(View.INVISIBLE);
-        B2.setVisibility(View.INVISIBLE);
-        R5.setVisibility(View.INVISIBLE);
-        R4.setVisibility(View.INVISIBLE);
-        R3.setVisibility(View.INVISIBLE);
-        R2.setVisibility(View.INVISIBLE);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.beergame_activity, container, false);
+        play = (TextView)rootView.findViewById(R.id.playText);
 
-        hitMe.setOnClickListener(this);
+        back = (ImageView)rootView.findViewById(R.id.back);
+        rule = (TextView)rootView.findViewById(R.id.rule);
+        rule.setVisibility(View.INVISIBLE);
+        gamecards = (ImageView)rootView.findViewById(R.id.gamecards);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
+        Integer q = mImageIds[rgenerator.nextInt(mImageIds.length)];
+        changeImageResource();
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                back.setVisibility(View.INVISIBLE);
+                play.setVisibility(View.INVISIBLE);
+                rule.setVisibility(View.VISIBLE);
+            }
+        });;
+        gamecards.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                changeImageResource();
+            }
+        });;
+
+
+        return rootView;
+
+    }
+    public void changeImageResource()
+    {
+        int i = rgenerator.nextInt(51);
+        gamecards.setImageResource(mImageIds[i]);
     }
 
-    @Override
-    public void onClick(View view) {
-        if (view == hitMe){
-            play.setVisibility(View.INVISIBLE);
         }
-    }
-}
