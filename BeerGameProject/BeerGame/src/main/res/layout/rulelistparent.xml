@@ -8,9 +8,12 @@
 
     <TextView
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:id="@+id/textView"
         android:textSize="25dp"
+        android:alpha="0.9"
+        android:textColor="#000"
+        android:background="@drawable/plain_white"
         android:paddingLeft="25dp"/>
 
 </RelativeLayout>

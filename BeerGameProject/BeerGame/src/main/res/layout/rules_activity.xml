@@ -6,11 +6,22 @@
 
     <TextView
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Rules"
+        android:layout_gravity="center"
         android:textSize="40dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:textColor="#000"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:alpha="0.9"
         android:gravity="center|top"
-        android:freezesText="true"/>
+        android:freezesText="true"
+        android:textStyle="bold"
+        android:id="@+id/rules"
+        android:shadowColor="#000"
+        android:shadowRadius="30"/>
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="match_parent"
@@ -19,15 +30,45 @@
         android:orientation="vertical">
         <TextView
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/plain_white"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:textColor="#000"
+            android:paddingBottom="5dp"
+            android:alpha="0.7"
             android:text="click card to see the rule"
             android:gravity="center"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:id="@+id/click"/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="130dp"
+            android:layout_marginTop="-25dp"
+            android:background="@drawable/arrow_low"
+            android:id="@+id/showFinGame1"
+            android:alpha="0.7"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="-21dp"
+            android:layout_marginLeft="130dp"
+            android:background="@drawable/arrow_low"
+            android:id="@+id/showFinGame2"
+            android:alpha="0.7"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
         <ExpandableListView
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:id="@+id/rulesList"/>
+        </RelativeLayout>
 
     </LinearLayout>
 </LinearLayout>

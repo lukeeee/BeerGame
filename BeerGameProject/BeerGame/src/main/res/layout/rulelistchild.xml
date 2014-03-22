@@ -3,15 +3,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center|top"
+    android:gravity="center"
     android:padding="10dp">
 
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/textView"
+        android:alpha="0.9"
+        android:textColor="#000"
+        android:background="@drawable/plain_white"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:paddingLeft="25dp"
-        android:textSize="20dp"/>
+        android:paddingRight="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

@@ -10,4 +10,7 @@
     <color name="ColorRed">#FF0000</color>
     <color name="ColorBlack">#000</color>
     <string name="about">Beer Game is a card game like Kings, circle of death, kings cup, donut, oval of fire, ring of fire or in Sweden "Ölspelet"</string>
+    <string name="made_by">Made by:\n dLUKs applications</string>
+    <string name="action_mute">Mute</string>
+    <string name="play_again">All cards are out!!\n Want to play again?</string>
 </resources>

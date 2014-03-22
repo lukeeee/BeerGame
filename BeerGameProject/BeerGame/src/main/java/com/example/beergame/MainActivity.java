@@ -2,10 +2,7 @@ package com.example.beergame;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,16 +12,18 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Locale;
 
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+    int[] menuImage = new int[]
+            {R.drawable.test1,R.drawable.test2,R.drawable.test3};
+    private MenuItem sound_handler;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -39,6 +38,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      */
     ViewPager mViewPager;
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +49,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         setContentView(R.layout.activity_main);
         final ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        if (Build.VERSION.SDK_INT > 14) {
+            actionBar.setLogo(R.drawable.beergame2);
+        }
+        actionBar.setDisplayShowTitleEnabled(false);
 
 
 
@@ -78,7 +82,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             // this tab is selected.
             actionBar.addTab(
                     actionBar.newTab()
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
+                            .setIcon(menuImage[i])
                             .setTabListener(this));
         }
     }
@@ -86,9 +90,33 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        return false;
+        getMenuInflater().inflate(R.menu.main, menu);
+        sound_handler = menu.findItem(R.id.action_mute);
+        if (!HelperClass.Sounds.app_sounds){
+            sound_handler.setIcon(getResources().getDrawable(R.drawable.ic_action_volume_muted));
+        } else{
+            sound_handler.setIcon(getResources().getDrawable(R.drawable.ic_action_volume_on));
+        }
+        return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_mute:
+                if (HelperClass.Sounds.app_sounds){
+                    HelperClass.Sounds.app_sounds = false;
+                    sound_handler.setIcon(getResources().getDrawable(R.drawable.ic_action_volume_muted));
+                    Toast.makeText(this, "Sounds off", Toast.LENGTH_LONG).show();
+                } else{
+                    HelperClass.Sounds.app_sounds = true;
+                    sound_handler.setIcon(getResources().getDrawable(R.drawable.ic_action_volume_on));
+                    Toast.makeText(this, "Sounds on", Toast.LENGTH_LONG).show();
+                }
+                return true;
 
+        }
+        return true;
+    }
 
     @Override
     protected void onResume(){

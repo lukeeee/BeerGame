@@ -8,46 +8,61 @@
         android:layout_width="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:text="About"
-            android:id="@+id/AboutText"
-            android:layout_gravity="top|center"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_gravity="center"
+            android:textSize="40dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:textColor="#000"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:alpha="0.9"
+            android:id="@+id/about"
+            android:gravity="center|top"
+            android:freezesText="true"
+            android:textStyle="bold"
+            android:shadowColor="#000"
+            android:shadowRadius="30"/>
     <LinearLayout
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
         <TextView
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:text="@string/about"
             android:gravity="center"
-            android:layout_marginTop="50dp"
-            android:textSize="18dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/plain_white"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="#000"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:alpha="0.8"
+            android:textSize="18dp"
+            android:id="@+id/about_text"/>
         <TextView
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Made By:"
+            android:layout_width="260dp"
+            android:text="@string/made_by"
             android:gravity="center"
-            android:layout_marginTop="60dp"
-            android:textSize="18dp"/>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="dLUKs applications"
-            android:gravity="center"
-            android:layout_marginTop="1dp"
+            android:background="@drawable/plain_white"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#000"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:id="@+id/madeby"
+            android:alpha="0.8"
+            android:layout_marginTop="40dp"
             android:textSize="18dp"/>
         <ImageView
             android:layout_height="wrap_content"
